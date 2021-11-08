@@ -1,6 +1,5 @@
 {{ define "main" }}
-<br>
-<br>
+
 <!-- Define paginator used to display posts -->
 {{ $paginator := .Paginate (where .Pages "Section" "writeups") }}
 <!-- Use default pagination template -->
@@ -8,6 +7,8 @@
 	<div class="container">
 		
 		<div class="blog-grids">
+			<br>
+			<br>
 			{{ with $paginator }}
 			{{ range $index, $element := .Pages }}
 			<div class="col-md-6 blog-grid">
