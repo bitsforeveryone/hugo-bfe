@@ -5,6 +5,11 @@
 <div id="blog" class="blog">
 	<div class="container">
 		
+		<div class="blog-title">
+			<br>
+			<br>
+			<h1>BFE Blog</h1>
+		</div>
 		<div class="blog-grids">
 			<br>
 			<br>
@@ -13,7 +18,7 @@
 			<div class="col-md-6 blog-grid">
 				<a href="#"><img src="/images/b1.jpg" class="img-responsive" alt=""></a>
 				<h4><a href="{{ .Permalink }}">{{ $element.Title }}</a></h4>
-				   <span>{{ .Date.Format "2 Jan | 2006" }}</span>
+					<span>{{ .Date.Format "2 Jan | 2006" }}</span>
 				<p>{{ .Summary }}</p>
 				<br>
 			</div>
