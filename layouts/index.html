@@ -1,46 +1,105 @@
 {{ define "main" }}
-<body>
-	<div class="header">
-		<div class="container">
-			<div class="banner-info" >
-				<h2>BitsForEveryone</h2>
-				<p></p>
-				<h3>
-					<span style="color: #ffffff;">{{ .Params.teamDescription }}</span>
-				</h3>
-				<p></p>
-				<a href="https://discord.gg/p7Vs9bCMXf" class="text-warning">Join us on Discord</a>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
 
-	<div id="service" class="service">
-		<div class="container">
-			<h3>Areas of Interest</h3>
-			<div class="service-grids">
-			<div class="icon-grids">
-		{{ range .Params.areasOfInterest }}
-
-				<div class="col-md-6 futr-grid futr1">
-					<div class="icon-pic">
-						<div class="icon text-center">
-							<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
-							</div>
-					</div>
-					<div class="icon-info">
-					<h4><a href="#">{{ .title }}</a></h4>
-
-					<p>{{ .description }}</p>
-					</div>
-					<!-- <div class="clearfix"></div> -->
-				</div>
-	{{end}}
-			</div>
-		</div>
-	</div>
+<style>
+    /* .bg {
+        background-image: url("/img/banner50.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    } */
+    /* .bg {
+        background-color: #434039;
 
 
-</body>
+    }
+    body{
+        background-color: #2C2A29;;
+
+    } */
+    .img_shadow {
+        box-shadow: 0px -0px 30px -3px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0px -0px 30px -3px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-custom {
+        background-color: #333c33;
+        color: white;
+        box-shadow: 0px -0px 10px -3px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0px -0px 10px -3px rgba(0, 0, 0, 0.5);
+    }
+
+    .card_shadow {
+        box-shadow: 0px -0px 10px -3px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0px -0px 10px -3px rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+        font-family: 'Inconsolata', monospace;
+    }
+
+    * .display-5 {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .card-title {
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
+
+<div class="main px-4 py-3 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/img/c3tlogo.png" alt="" width="400">
+    <h1 class="display-5 fw-bold">
+        {{ .Site.Params.TeamName }}
+    </h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead fs-4">
+            {{ .Site.Params.Description }}
+        </p>
+    </div>
+</div>
+
+<hr class="hr hr-blurry" />
+
+<div class="blurb container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6 mx-auto">
+            <img src="/img/banner.jpg" class="d-block mx-lg-auto img-fluid rounded-3 img_shadow" alt="Bootstrap Themes"
+                width="700" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">
+                {{ .Site.Params.BlurbTitle }}
+            </h1>
+            <p class="lead fs-5">
+                {{ .Site.Params.Blurb }}
+            </p>
+            <a class="d-grid gap-2 d-md-flex justify-content-md-start" href={{ .Site.Params.ButtonLink }}>
+                <button type="button" class="btn btn-custom btn-lg px-4 me-md-2">
+                    {{ .Site.Params.JoinButton }}
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<hr class="hr hr-blurry" />
+
+
+<div class="container col-xxl-8 px-4 py-5 text-center">
+    <h1 class="display-5 fw-bold lh-1 mb-3">
+        Writeups
+    </h1>
+    <div class="row">
+        {{ range ( where .Site.RegularPages "Type" "writeups" | first 4 ) }}
+        <div class="col py-2">
+            <div class="card card-body card_shadow">
+                <h2 class="card-title">{{ .Title }}</h2>
+                <p class="card-text">{{ .Summary | markdownify }}</p>
+                <a href="{{ .Permalink }}" class="btn btn-custom">Read more</a>
+            </div>
+        </div>
+        {{end}}
+    </div>
+</div>
 {{ end }}
-	
