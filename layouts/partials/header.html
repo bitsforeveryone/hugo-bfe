@@ -1,32 +1,85 @@
-<div id="home" class="top-header">
+<style>
+    /* .bg-c3t{
+        background-color: #434039;
+    
+    }
+
+    .text-gold{
+        color: #B79058;
+        font-size: 16pt;
+    } */
+    .nav_shadow {
+        box-shadow: 0px -0px 14px 0px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0px -0px 14px 0px rgba(0, 0, 0, 0.5);
+    }
+    /* .c3t_nav {
+        background-color: #333c33;
+    } */
+
+    .navbar-custom {
+        background-color: #333c33;
+        font-size: 16pt;
+    }
+    .navbar-custom *{
+        color: white;
+        font-family: 'Poppins', sans-serif;
+
+    }
+    
+
+
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark nav_shadow navbar-custom">
     <div class="container">
-        <div  class="logo">
-            <h1>
-                <a href="/" ></a>
-            </h1>
-        </div>
-        <div class="top-menu">
-            <span class="menu"><img src="/static/images/nav-icon.png" alt=""></span>
-            <ul>
-                {{ range .Site.Menus.main }}
-                {{ if ne .Name "empty" }}
-                    <li><a href="{{ .URL }}">
-                        {{ $text := print .Name | safeHTML }}
-                        <strong>{{ $text }}</strong></a></li>
-                    {{ else }}
-                    <li><a>‎</a><strong></strong></a></li>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {{ $currentPage := . }}
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    {{ range .Site.Menus.main }}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{.URL}}">
+                            {{ .Pre }}
+                            <strong>{{ .Name }}</strong>
+                        </a>
+                    </li>
                     {{ end }}
-                {{ end }}
-                
-            </ul>
-            <!-- script-for-menu -->
-            <script>
-                $("span.menu").click(function () {
-                    $(".top-menu ul").slideToggle("slow", function () {
-                    });
-                });
-            </script>
-            <!-- script-for-menu -->
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+</nav>
+<br>
+
+<!-- <div class="container py-4">
+    <nav class="navbar navbar-expand-lg navbar-light rounded-3 bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ "" | relURL}}">
+                <img src="/img/c3tlogo.png" height="40" class="d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {{ $currentPage := . }}
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    {{ range .Site.Menus.main }}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{.URL}}">
+                            {{ .Pre }}
+                            <strong>{{ .Name }}</strong>
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div> -->
