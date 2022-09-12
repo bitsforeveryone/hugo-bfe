@@ -3,52 +3,39 @@
 <!-- Define paginator used to display posts -->
 {{ $paginator := .Paginate (where .Pages "Section" "writeups") }}
 <!-- Use default pagination template -->
-<div id="writeups" class="blog">
-	<div class="container">
-		<div class="blog-title">
-			<br>
-			<br>
-			<h1>BFE Writeups</h1>
-		</div>
-		<div class="blog-grids">
-			<br>
-			<br>
-			{{ with $paginator }}
-			{{ range $index, $element := .Pages }}
-			<div class="col-md-6 blog-grid">
-				<!-- <a href="#"><img src="/images/b1.jpg" class="img-responsive" alt=""></a> -->
-				<!-- <a href="#"><img src={{ .Params.image }} class="img-responsive" alt=""></a> -->
-				<!-- <a href="#">
-					<img src="{{ with .Params.image }}{{ . }}{{ end }}" class="img-responsive" alt=""/>
-				</a> -->
-				<a>
-					<img src="{{ .Params.image }}" class="img-responsive">
-				</a>
-
-				<!-- <a>{{ with .Params.image }}<img src="{{ . }}" class="img-responsive">{{ end }}</a> -->
-				<!-- https://discourse.gohugo.io/t/post-featured-image/864/2 -->
-				<h4><a href="{{ .Permalink }}">{{ $element.Title }}</a></h4>
-					<span>{{ .Date.Format "2 Jan | 2006" }}</span>
-				<p>{{ .Summary }}</p>
-				<br>
-			</div>
-
-			{{ end }}
-			{{ end }}
-			
+<div class="container">
+	{{ with $paginator }}
+	{{ range $index, $element := .Pages }}
+	<div class="row py-2">
+		<div class="card">
+			<div class="card-body">
+				<div class="card-title">
+					<a href="{{ .Permalink }}">{{ if .Draft }}DRAFT: {{end}}{{ .Title | markdownify }}</a>
+				</div>
+				<h6 class="card-subtitle mb-2 text-muted">
+					{{ range .Param "authors" }}
+					{{ . }}<br>
+					{{ end }}
+				</h6>
+				<p class="card-text">
+					{{ .Summary }}
+				</p>
 			</div>
 		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col" style="text-align: center;">
+	</div>
+	{{ end }}
+	{{ end }}
+</div>
+<div class="container">
+	<div class="d-flex align-items-center justify-content-center">
+		{{ template "_internal/pagination.html" . }}
+	</div>
+	<!-- <div class="row">
+		<div class="col" style="text-align: center;">
 			{{ template "_internal/pagination.html" . }}
 		</div>
-		</div>
-		</div>
-
-	</div>
-	<!-- <div class="clearfix"> </div> -->
-	
+	</div> -->
 </div>
+
+
 {{ end }}
-	

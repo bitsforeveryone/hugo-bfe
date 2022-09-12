@@ -1,11 +1,13 @@
 {{ define "main" }}
 <div class="container">
     <h1>{{ .Title | markdownify}}</h1>
-    <span>
         {{ range .Param "authors" }}
+        <span>
+
             By {{ . }}
+        <span>
+        <br>
         {{ end }}
-    </span>
     <hr class="hr hr-blurry" />
     {{ .Content }}
 </div>
