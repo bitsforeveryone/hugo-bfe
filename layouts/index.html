@@ -1,21 +1,7 @@
 {{ define "main" }}
 
 <style>
-    /* .bg {
-        background-image: url("/img/banner50.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    } */
-    /* .bg {
-        background-color: #434039;
 
-
-    }
-    body{
-        background-color: #2C2A29;;
-
-    } */
     .img_shadow {
         box-shadow: 0px -0px 30px -3px rgba(0, 0, 0, 0.5);
         -webkit-box-shadow: 0px -0px 30px -3px rgba(0, 0, 0, 0.5);
@@ -24,11 +10,6 @@
     .btn-custom {
         background-color: #333c33;
         color: white;
-        box-shadow: 0px -0px 10px -3px rgba(0, 0, 0, 0.5);
-        -webkit-box-shadow: 0px -0px 10px -3px rgba(0, 0, 0, 0.5);
-    }
-
-    .card_shadow {
         box-shadow: 0px -0px 10px -3px rgba(0, 0, 0, 0.5);
         -webkit-box-shadow: 0px -0px 10px -3px rgba(0, 0, 0, 0.5);
     }
@@ -85,18 +66,19 @@
 
 <hr class="hr hr-blurry" />
 
-
-<div class="container col-xxl-8 px-4 py-5 text-center">
+<div class="container col-lg-8 px-4 py-5 text-center">
     <h1 class="display-5 fw-bold lh-1 mb-3">
         Writeups
     </h1>
     <div class="row">
         {{ range ( where .Site.RegularPages "Type" "writeups" | first 4 ) }}
         <div class="col py-2">
-            <div class="card card-body card_shadow">
-                <h2 class="card-title">{{ .Title }}</h2>
-                <p class="card-text">{{ .Summary | markdownify }}</p>
-                <a href="{{ .Permalink }}" class="btn btn-custom">Read more</a>
+            <div class="card h-100">
+                <div class="card-body d-grid">
+                    <h2 class="card-title">{{ .Title }}</h2>
+                    <p class="card-text">{{ .Summary | markdownify }}</p>
+                    <a href="{{ .Permalink }}" class="btn btn-custom mt-auto">Read more</a>
+                </div>
             </div>
         </div>
         {{end}}

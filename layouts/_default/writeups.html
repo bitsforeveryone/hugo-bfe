@@ -3,7 +3,7 @@
 <!-- Define paginator used to display posts -->
 {{ $paginator := .Paginate (where .Pages "Section" "writeups") }}
 <!-- Use default pagination template -->
-<div class="container">
+<div class="container col-lg-8">
 	{{ with $paginator }}
 	{{ range $index, $element := .Pages }}
 	<div class="row py-2">
